@@ -1,15 +1,62 @@
-# Práctica 5.8 – Controladores
+# CRUD Productos → Categoría
 
-💡 **Nota:** Puedes ver este README con formateado usando **Ctrl + Shift + V** en VS Code (Vista previa de Markdown).
+## Mini Framework Casero
 
-En esta práctica vamos a centralizar en un único archivo Controller toda la lógica relacionada con cada recurso. Por ejemplo, las operaciones sobre productos se agruparán en ProductoController.
+Este documento explica cómo implementar un **CRUD completo de Productos**, incluyendo su relación con **Categorías** usando el mini-framework desarrollado en las prácticas:
 
-⚠️ **IMPORTANTE:** En esta práctica, la constante `BASE_URL` debe apuntar **exactamente al subdirectorio `/public/web`**, ya que ahora los scripts públicos están organizados dentro de esa carpeta.
+- **DB** – conexión y ejecución SQL
+- **Model** – Active Record Base
+- **QueryBuilder** – construcción fluida de consultas
+- **Request** – gestión unificada de GET + POST
+- **Controladores** en `/app/Http/Controllers/`
+- **Vistas con layout** en `/resources/views/`
+- **Scripts públicos** dentro de `/public/web`
 
-Ejemplo:
+El sistema implementa:
 
-```php
-define('BASE_URL', '/2526_servidor/php/2526_practicas/p5_8/public/web');
+- Un CRUD completo de **Productos**
+- Cada Producto pertenece a **una Categoría** (`categoria_id`)
+- Una Categoría puede tener **varios Productos** (relación 1:N)
+
+---
+
+## 📁 Estructura del Proyecto
+
+```txt
+app/
+ ├── Core/
+ │    ├── DB.php
+ │    ├── Model.php
+ │    ├── QueryBuilder.php
+ │    ├── Request.php
+ │    └── helpers/
+ │         └── helper.php
+ ├── Models/
+ │    ├── Categoria.php
+ │    └── Producto.php
+ └── Http/
+      └── Controllers/
+           ├── ProductoController.php
+           └── CategoriaController.php   (solo para obtener categorías)
+
+public/
+ └── web/
+      └── productos/
+           ├── index.php
+           ├── show.php
+           ├── create.php
+           ├── store.php
+           ├── edit.php
+           ├── update.php
+           └── destroy.php
+
+resources/
+ └── views/
+       ├── layouts/app.php
+       └── productos/
+            ├── index.php
+            ├── show.php
+            ├── create.php
+            ├── edit.php
+            └── _form.php
 ```
-
-Si `BASE_URL` apunta solo a `/public`, dejarán de funcionar todas las rutas que dependan de dicha constante (por ejemplo, **los enlaces con URL absoluta**, como la hoja de estilos de la aplicación, o las redirecciones generadas con `redirect()`).
