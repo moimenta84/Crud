@@ -1,0 +1,56 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+header, main, footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+main {
+    flex-grow: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.form-vertical {
+    max-width: 400px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column; /* Crea la 'fila' vertical */
+}
+
+.form-group label {
+    margin-bottom: .25rem;
+    font-weight: bold;
+}
+
+.form-actions {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+input, select, button {
+    padding: .25rem;
+    font-size: 1rem;
+}
+
